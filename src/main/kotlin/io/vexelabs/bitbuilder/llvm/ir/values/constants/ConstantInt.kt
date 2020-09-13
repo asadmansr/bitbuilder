@@ -17,10 +17,9 @@ public class ConstantInt internal constructor() : ConstantValue() {
     }
 
     /**
-     * Create a new integer value of types [type]
+     * Create a new integer value of type [type]
      *
-     * This creates a new integer from [type] with [value]. You can decide if
-     * this is signed with [signExtend].
+     * This creates a new integer of [type] with the provided [value].
      *
      * @see LLVM.LLVMConstInt
      */
@@ -32,6 +31,13 @@ public class ConstantInt internal constructor() : ConstantValue() {
         ref = LLVM.LLVMConstInt(type.ref, value, signExtend.toLLVMBool())
     }
 
+    /**
+     * Create a new integer value of type [type]
+     *
+     * This creates a new integer of [type] with the provided [value].
+     *
+     * @see LLVM.LLVMConstInt
+     */
     public constructor(
         type: IntType,
         value: Int,
@@ -469,7 +475,7 @@ public class ConstantInt internal constructor() : ConstantValue() {
     public fun getZExt(type: IntType): ConstantInt = getExt(type, false)
 
     /**
-     * Converstion to float type
+     * Conversion to float type
      *
      * @see LLVM.LLVMConstSIToFP
      * @see LLVM.LLVMConstUIToFP
